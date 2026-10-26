@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Sabia Aslam Travel - Explore countries, beautiful destinations, world facts and travel tips.">
+
+    <title>Sabia Aslam Travel | Explore the World</title>
+h
+    <style>
+        /* BASIC SETTINGS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1f8f8;
+            color: #24434c;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #073b4c, #087f8c);
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+        }
+
+        header h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            background-color: #ffffff18;
+            padding: 9px 15px;
+            border-radius: 25px;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            background-color: #f4c95d;
+            color: #073b4c;
+        }
+
+        /* ALL SECTIONS */
+        section {
+            padding: 60px 7%;
+            text-align: center;
+            scroll-margin-top: 15px;
+        }
+
+        section h2 {
+            color: #073b4c;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        section h3 {
+            margin-top: 12px;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            margin-bottom: 18px;
+        }
+
+        /* HOME SECTION */
+        #home {
+            min-height: 500px;
+            background:
+                linear-gradient(
+                    rgba(4, 42, 55, 0.72),
+                    rgba(4, 42, 55, 0.45)
+                ),
+                url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #home h2 {
+            color: white;
+            font-size: clamp(30px, 5vw, 48px);
+        }
+
+        #home h3 {
+            color: #f4d77b;
+            font-size: 23px;
+        }
+
+        #home p {
+            max-width: 700px;
+            font-size: 17px;
+        }
+
+        #home img {
+            width: 100%;
+            max-width: 750px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 4px solid white;
+            margin-top: 20px;
+        }
+
+        /* BUTTONS */
+        button {
+            background: #0b9b91;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #f0bd42;
+            color: #073b4c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px #00000020;
+        }
+
+        /* DESTINATIONS AND FACT CARDS */
+        .destination-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .destination-card {
+            background-color: white;
+            flex: 1 1 250px;
+            max-width: 340px;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px #073b4c12;
+            border: 1px solid #e1eeee;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px #073b4c20;
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .destination-card h3 {
+            color: #087f8c;
+            font-size: 21px;
+        }
+
+        .destination-card p {
+            color: #526b74;
+            font-size: 15px;
+        }
+
+        /* COUNTRIES SEARCH */
+        #countries {
+            background-color: #e4f4f1;
+        }
+
+        #countrySearch {
+            width: 100%;
+            max-width: 350px;
+            padding: 13px;
+            border: 2px solid #b5d9d7;
+            border-radius: 25px;
+            outline: none;
+            font-size: 15px;
+            margin: 12px 0;
+        }
+
+        #countrySearch:focus {
+            border-color: #087f8c;
+        }
+
+        #countryResult {
+            max-width: 650px;
+            margin: 25px auto 0;
+            padding: 25px;
+            background: white;
+            border-radius: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        /* WORLD FACTS */
+        #facts {
+            background-color: #f8fcfc;
+        }
+
+        #facts .destination-card {
+            border-top: 4px solid #0b9b91;
+        }
+
+        /* TRAVEL TIPS */
+        #tips {
+            background: linear-gradient(135deg, #073b4c, #087f8c);
+            color: white;
+        }
+
+        #tips h2 {
+            color: white;
+        }
+
+        #tips .destination-card {
+            border-top: 4px solid #f0bd42;
+        }
+
+        /* ABOUT SECTION */
+        #about {
+            background-color: #e4f4f1;
+        }
+
+        #about img {
+            display: block;
+            width: 100%;
+            max-width: 650px;
+            height: 320px;
+            object-fit: cover;
+            margin: 25px auto;
+            border-radius: 18px;
+            box-shadow: 0 8px 22px #073b4c20;
+        }
+
+        #about p {
+            max-width: 750px;
+            margin: 15px auto;
+        }
+
+        /* CONTACT SECTION */
+        #contact {
+            background-color: white;
+        }
+
+        #contact form {
+            max-width: 550px;
+            margin: 25px auto 0;
+            text-align: left;
+            background-color: #f1f8f8;
+            padding: 28px;
+            border-radius: 16px;
+        }
+
+        #contact label {
+            font-weight: bold;
+            color: #073b4c;
+        }
+
+        #contact input,
+        #contact textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #b5d9d7;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        #contact input:focus,
+        #contact textarea:focus {
+            outline: 2px solid #0b9b91;
+        }
+
+        #contact textarea {
+            resize: vertical;
+        }
+
+        #contactResult {
+            color: #087f8c;
+            font-weight: bold;
+            margin-top: 18px;
+        }
+
+        /* INFORMATION POPUP */
+        #infoBox {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #ffffff;
+            border: 2px solid #0b9b91;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px #073b4c20;
+            overflow-wrap: anywhere;
+        }
+
+        #infoBox h2 {
+            color: #087f8c;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #042d3a;
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        footer h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        /* MOBILE RESPONSIVE DESIGN */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 27px;
+            }
+
+            nav {
+                gap: 8px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 8px 11px;
+            }
+
+            section {
+                padding: 40px 5%;
+            }
+
+            section h2 {
+                font-size: 26px;
+            }
+
+            #home {
+                min-height: 450px;
+            }
+
+            #home img {
+                height: 220px;
+            }
+
+            .destination-card {
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+
+            #contact form {
+                padding: 18px;
+            }
+        }
+        </style>
+</head>
+<body>
+         <!-- HEADER -->
+    <header>
+        <h1>✈ Sabia Aslam Travel</h1>
+        <p>Explore the World, Discover Amazing Places!</p>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#countries">Countries</a>
+            <a href="#facts">World Facts</a>
+            <a href="#tips">Travel Tips</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HOME SECTION -->
+    <section id="home">
+        <h2>Welcome to Sabia Aslam Travel 🌍</h2>
+        <h3>Discover the Beauty of Our World!</h3>
+
+        <p>
+            Explore amazing countries, beautiful mountains,
+            historical places, oceans and different cultures.
+            Your journey around the world starts here!
+        </p>
+
+        <a href="#destinations">
+            <button>Explore Now 🌎</button>
+        </a>
+
+        <br><br>
+
+        <img
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80"
+            alt="Beautiful mountains"
+            width="600">
+    </section>
+
+    <!-- DESTINATIONS SECTION -->
+    <section id="destinations">
+        <h2>🌍 Explore Beautiful Destinations</h2>
+        <p>Discover amazing places around the world!</p>
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=600&q=80"
+                     alt="Pakistan" width="250">
+                <h3>🇵🇰 Pakistan</h3>
+                <p>Explore mountains, historic places and culture.</p>
+                <button onclick="showInfo('pakistan')">Learn More</button>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80"
+                     alt="France" width="250">
+                <h3>🇫🇷 France</h3>
+                <p>Discover Paris and the Eiffel Tower.</p>
+                <button onclick="showInfo('france')">Learn More</button>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80"
+                     alt="Japan" width="250">
+                <h3>🇯🇵 Japan</h3>
+                <p>Explore Japanese traditions and technology.</p>
+                <button onclick="showInfo('japan')">Learn More</button>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=600&q=80"
+                     alt="Turkey" width="250">
+                <h3>🇹🇷 Türkiye</h3>
+                <p>Discover Istanbul and historical landmarks.</p>
+                <button onclick="showInfo('turkey')">Learn More</button>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=600&q=80"
+                     alt="Maldives" width="250">
+                <h3>🇲🇻 Maldives</h3>
+                <p>Discover beautiful islands and blue waters.</p>
+                <button onclick="showInfo('maldives')">Learn More</button>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=600&q=80"
+                     alt="Egypt" width="250">
+                <h3>🇪🇬 Egypt</h3>
+                <p>Explore ancient history and the pyramids.</p>
+                <button onclick="showInfo('egypt')">Learn More</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- COUNTRIES SECTION -->
+    <section id="countries">
+        <h2>🗺️ Countries of the World</h2>
+        <p>Learn about capitals, currencies and languages.</p>
+
+        <label for="countrySearch">Search for a country:</label>
+        <input type="text" id="countrySearch"
+               placeholder="Enter country name">
+
+        <button onclick="searchCountry()">Search</button>
+
+        <div id="countryResult">
+            <p>Search a country to discover its information.</p>
+        </div>
+    </section>
+
+    <!-- WORLD FACTS SECTION -->
+    <section id="facts">
+        <h2>🌎 Amazing World Facts</h2>
+        <p>Learn something new about our beautiful planet!</p>
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+                <h3>🌍 Seven Continents</h3>
+                <p>Earth has seven commonly recognized continents.</p>
+                <button onclick="alert('Asia, Africa, North America, South America, Antarctica, Europe and Australia.')">
+                    Discover More
+                </button>
+            </div>
+
+            <div class="destination-card">
+                <h3>🌊 Five Oceans</h3>
+                <p>Discover the five major oceans of Earth.</p>
+                <button onclick="alert('Pacific, Atlantic, Indian, Southern and Arctic Oceans.')">
+                    Discover More
+                </button>
+            </div>
+
+            <div class="destination-card">
+                <h3>🏔️ Mount Everest</h3>
+                <p>The highest mountain above sea level.</p>
+                <button onclick="alert('Mount Everest is in the Himalayas on the Nepal-China border. Its height is about 8,849 metres.')">
+                    Discover More
+                </button>
+            </div>
+
+            <div class="destination-card">
+                <h3>🌐 Languages</h3>
+                <p>People around the world speak many languages.</p>
+                <button onclick="alert('Urdu, English, Arabic, Spanish, Mandarin Chinese and many other languages are spoken around the world.')">
+                    Discover More
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TRAVEL TIPS SECTION -->
+    <section id="tips">
+        <h2>🎒 Smart Travel Tips</h2>
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+                <h3>Pack Smart</h3>
+                <p>Make a checklist before packing your luggage.</p>
+                <button onclick="alert('Pack suitable clothes, medicines recommended for you, travel documents and necessary items.')">
+                    Read Tips
+                </button>
+            </div>
+
+            <div class="destination-card">
+                <h3>Save Money</h3>
+                <p>Plan your budget before travelling.</p>
+                <button onclick="alert('Compare transport options, plan meal costs and check accommodation prices before your trip.')">
+                    Read Tips
+                </button>
+            </div>
+
+            <div class="destination-card">
+                <h3>Stay Safe</h3>
+                <p>Learn about your destination before visiting.</p>
+                <button onclick="alert('Check official travel advice, respect local laws and keep important documents secure.')">
+                    Read Tips
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2>About Sabia Aslam Travel</h2>
+
+        <img
+            src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80"
+            alt="Travel planning"
+            width="400">
+
+        <p>
+            Welcome to Sabia Aslam Travel!
+            This website is designed to help people discover
+            countries, famous destinations, world facts and
+            useful travel information.
+        </p>
+
+        <p>
+            Our mission is to make exploring the world
+            interesting, simple and enjoyable.
+        </p>
+
+        <a href="#destinations">
+            <button>Explore Destinations</button>
+        </a>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2>📩 Contact Us</h2>
+        <p>Share your feedback about our website.</p>
+
+        <form onsubmit="sendMessage(event)">
+            <label for="visitorName">Your Name:</label><br>
+            <input type="text" id="visitorName"
+                   placeholder="Enter your name" required>
+            <br><br>
+
+            <label for="visitorEmail">Your Email:</label><br>
+            <input type="email" id="visitorEmail"
+                   placeholder="Enter your email" required>
+            <br><br>
+
+            <label for="visitorMessage">Your Message:</label><br>
+            <textarea id="visitorMessage"
+                      placeholder="Write your message"
+                      rows="5" required></textarea>
+            <br><br>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <p id="contactResult"></p>
+    </section>
+
+    <!-- COUNTRY INFORMATION POPUP -->
+    <div id="infoBox" style="display:none;">
+        <h2 id="infoTitle"></h2>
+        <p id="infoText"></p>
+        <button onclick="closeInfo()">Close</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2>✈ Sabia Aslam Travel</h2>
+        <p>Explore the World. Discover Something New.</p>
+        <p>Home | Destinations | World Facts | Travel Tips</p>
+        <p>© 2026 Sabia Aslam Travel. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const countryData = {
+            pakistan: {
+                title: "🇵🇰 Pakistan",
+                text: "Capital: Islamabad | Region: South Asia | Official language: Urdu | Currency: Pakistani Rupee (PKR) | Famous places: Hunza, Lahore and Karachi."
+            },
+            france: {
+                title: "🇫🇷 France",
+                text: "Capital: Paris | Region: Europe | Language: French | Currency: Euro | Famous place: Eiffel Tower."
+            },
+            japan: {
+                title: "🇯🇵 Japan",
+                text: "Capital: Tokyo | Region: East Asia | Language: Japanese | Currency: Japanese Yen | Famous place: Mount Fuji."
+            },
+            turkey: {
+                title: "🇹🇷 Türkiye",
+                text: "Capital: Ankara | Region: Europe and Asia | Language: Turkish | Currency: Turkish Lira | Famous place: Istanbul."
+            },
+            maldives: {
+                title: "🇲🇻 Maldives",
+                text: "Capital: Malé | Region: Indian Ocean | Language: Dhivehi | Currency: Maldivian Rufiyaa | Famous for beautiful coral islands."
+            },
+            egypt: {
+                title: "🇪🇬 Egypt",
+                text: "Capital: Cairo | Region: North Africa | Language: Arabic | Currency: Egyptian Pound | Famous for the Pyramids of Giza."
+            }
+        };
+
+        function showInfo(country) {
+            const data = countryData[country];
+
+            if (!data) return;
+
+            document.getElementById("infoTitle").textContent = data.title;
+            document.getElementById("infoText").textContent = data.text;
+            document.getElementById("infoBox").style.display = "block";
+
+            document.getElementById("infoBox").scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+
+        function closeInfo() {
+            document.getElementById("infoBox").style.display = "none";
+        }
+
+        function searchCountry() {
+            const input = document.getElementById("countrySearch")
+                .value.trim().toLowerCase();
+
+            const result = document.getElementById("countryResult");
+
+            if (countryData[input]) {
+                result.innerHTML = "";
+                const heading = document.createElement("h3");
+                const paragraph = document.createElement("p");
+
+                heading.textContent = countryData[input].title;
+                paragraph.textContent = countryData[input].text;
+
+                result.appendChild(heading);
+                result.appendChild(paragraph);
+            } else {
+                result.textContent =
+                    "Country not found. Try Pakistan, France, Japan, Turkey, Maldives or Egypt.";
+            }
+        }
+
+        function sendMessage(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("visitorName").value.trim();
+
+            document.getElementById("contactResult").textContent =
+                "Thank you, " + name + "! This demo form does not send messages yet.";
+
+            event.target.reset();
+        }
+    </script>
+
+
+</body>
+</html>
